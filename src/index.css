@@ -183,6 +183,14 @@ img{
   color: #252931;
 }
 
+.capitalize{
+  text-transform: capitalize;
+}
+
 form input{
   font-family: 'Merriweather', serif;
+}
+form span{
+  color:red;
+  font-size: .7rem;
 }

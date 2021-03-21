@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react' ;
+import { useForm } from 'react-hook-form'
 import Header from './components/Header';
 import avatar from './images/profilePic.jpg';
 
@@ -43,25 +44,10 @@ function App() {
     }
      reader.readAsDataURL(e.target.files[0]);
 }
-  const onSubmit= (e) => {
-    e.preventDefault();
-    let alertMsg = "";
-    alertMsg= (!name ? 'Please enter Given Name' :
-                    !surname ? 'Please enter surname' :
-                    !email ? 'Please enter email' :
-                    !phone ? 'Please enter phone':
-                    !house ? 'Please enter house name or #' :
-                    !street ? 'Please enter street' :
-                    !suburb ? 'Please enter suburb' :
-                    !state ? 'Please enter state' :
-                    !postcode ? 'Please enter postcode' :
-                    !country ? 'Please enter country' : '');
 
-   
-    if(alertMsg!==""){
-        alert(alertMsg)
-        return ;
-    }
+
+  const onSubmit= (e) => {
+    
      //add the form values to the hCard
      addhCard({name, surname, email, phone, house, street, suburb, state,postcode, country});
 
@@ -82,12 +68,14 @@ function App() {
     setCountry("");
 }
 
+const { register, handleSubmit, watch, errors } = useForm();
+
   return (
       <div className="container-flex">
         <div className='container'>
           <Header />
           {/* <AddCard onAdd={addhCard} /> */}
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
              <div className='row sub-heading'>
                 <div> <label>PERSONAL DETAILS </label> </div>
              </div>
@@ -97,12 +85,14 @@ function App() {
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='20'
+                    <input type='text' name='name' className = 'form-control'  ref={register({ required: true ,maxLength :20  })}
                     value={name} onChange={(e) => setName(e.target.value)} />
+                     {errors.name && <span>This field is required</span>}
                 </div>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='20'
+                    <input type='text' name='surname' className = 'form-control' maxLength='20' ref={register({ required: true ,maxLength :20 })}
                     value={surname} onChange={(e) => setSurname(e.target.value)} />
+                    {errors.surname && <span>This field is required</span>}
                 </div>
             </div>
            
@@ -112,12 +102,14 @@ function App() {
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='35'
+                    <input type='text' name='email' className = 'form-control' ref={register({ required: true ,maxLength :35  })}
                     value={email} onChange={(e) => setEmail(e.target.value)} />
+                     {errors.email && <span>This field is required</span>}
                 </div>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='10'
+                    <input type='text' name='phone' className = 'form-control' ref={register({ required: true ,maxLength :10, pattern: /^[0-9]+$/i  })}
                     value={phone} onChange={(e) => setPhone(e.target.value)} />
+                     {errors.phone && <span>This field is require numbers</span>}
                 </div>
             </div>
 
@@ -130,12 +122,14 @@ function App() {
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='15'
+                    <input type='text' name='house' className = 'form-control' ref={register({ required: true ,maxLength :15  })}
                     value={house} onChange={(e) => setHouse(e.target.value)} />
+                     {errors.house && <span>This field is required</span>}
                 </div>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='35'
+                    <input type='text' name='street' className = 'form-control' ref={register({ required: true ,maxLength :35  })}
                     value={street} onChange={(e) => setStreet(e.target.value)} />
+                    {errors.street && <span>This field is required</span>}
                 </div>
             </div>
             <div className='row'>
@@ -144,12 +138,14 @@ function App() {
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='35'
+                    <input type='text' name='suburb' className = 'form-control' ref={register({ required: true ,maxLength :35  })}
                     value={suburb} onChange={(e) => setSuburb(e.target.value)} />
+                    {errors.suburb && <span>This field is required</span>}
                 </div>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='10'
+                    <input type='text' name='state' className = 'form-control' ref={register({ required: true ,maxLength :10  })}
                     value={state} onChange={(e) => setState(e.target.value)} />
+                    {errors.state && <span>This field is required</span>}
                 </div>
             </div>
             <div className='row'>
@@ -158,12 +154,14 @@ function App() {
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='4'
+                    <input type='text' name='postcode' className = 'form-control' ref={register({ required: true ,minLength:4, maxLength :4 ,pattern: /^[(0-9)*]+$/gi })}
                     value={postcode} onChange={(e) => setPostcode(e.target.value)} />
+                     {errors.postcode && <span>This field is require 4 digits</span>}
                 </div>
                 <div className = 'col-md-6'>
-                    <input type='text' className = 'form-control' maxLength='15'
+                    <input type='text' name='country' className = 'form-control' ref={register({ required: true ,maxLength :15  })}
                     value={country} onChange={(e) => setCountry(e.target.value)} />
+                     {errors.country && <span>This field is required</span>}
                 </div>
             </div>
             <div className='row'>
@@ -203,17 +201,17 @@ function App() {
                     </div>
                     <div className='row card-subheading'>
                         <div className="col-md-2"><label >ADDRESS </label></div>
-                        <div className="col-md-10">{cardHouse}</div>
+                        <div className="col-md-10 capitalize">{cardHouse}</div>
                     </div>
                     <div className='row card-subheading'>
                         <div className="col-md-2"><label >&nbsp;</label></div>
-                        <div className="col-md-10">{cardSuburb}</div>
+                        <div className="col-md-10 capitalize">{cardSuburb}</div>
                     </div>
                     <div className='row card-subheading'>
                         <div className = 'col-md-2'> <label >POSTCODE </label> </div>
                         <div className = 'col-md-3'> {cardPost} </div>
                         <div className = 'col-md-2'> <label >COUNTRY </label> </div>
-                        <div className = 'col-md-3'> {cardCountry}  </div>
+                        <div className = 'col-md-3 capitalize'> {cardCountry}  </div>
                     </div>
                 </div>
             </div>

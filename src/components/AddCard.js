@@ -7,7 +7,7 @@ const AddCard = ({onAdd}) => {
     const [name, setName] = useState(() => '');
     const [surname, setSurname] = useState(() => '');
     const [email, setEmail] = useState(() => '');
-    const [phone, setPhone] = useState(() => '');
+    const [phone, setPhone] = useState(() => '0');
     const [house, setHouse] = useState(() => '');
     const [street, setStreet] = useState(() => '');
     const [suburb, setSuburb] = useState(() => '');
@@ -49,7 +49,7 @@ const AddCard = ({onAdd}) => {
             alert(alertMsg)
             return ;
         }
-        
+
         //add the form values to the hCard
         onAdd({name, surname, email, phone, house, street, suburb, state,postcode, country,selected});
 
