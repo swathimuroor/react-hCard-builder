@@ -1,0 +1,24 @@
+
+.container-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  min-width: 520px;
+  /* margin: 5px; */
+  min-height: 500px;
+  max-height: 540px;
+  /* border: 1px solid steelblue; */
+  padding: 30px 30px;
+  border-radius: 5px;
+  size: 25px;
+}
+
+.container-background{
+  background-color: #e8ecec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
