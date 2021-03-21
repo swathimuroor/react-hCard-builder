@@ -87,12 +87,12 @@ const { register, handleSubmit, watch, errors } = useForm();
                 <div className = 'col-md-6'>
                     <input type='text' name='name' className = 'form-control'  ref={register({ required: true ,maxLength :20  })}
                     value={name} onChange={(e) => setName(e.target.value)} />
-                     {errors.name && <span>This field is required</span>}
+                     {errors.name && <span>Enter given name</span>}
                 </div>
                 <div className = 'col-md-6'>
                     <input type='text' name='surname' className = 'form-control' maxLength='20' ref={register({ required: true ,maxLength :20 })}
                     value={surname} onChange={(e) => setSurname(e.target.value)} />
-                    {errors.surname && <span>This field is required</span>}
+                    {errors.surname && <span>Enter surname</span>}
                 </div>
             </div>
            
@@ -102,14 +102,14 @@ const { register, handleSubmit, watch, errors } = useForm();
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' name='email' className = 'form-control' ref={register({ required: true ,maxLength :35  })}
+                    <input type='text' name='email' className = 'form-control' ref={register({ required: true ,maxLength :35, pattern: /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g })}
                     value={email} onChange={(e) => setEmail(e.target.value)} />
-                     {errors.email && <span>This field is required</span>}
+                     {errors.email && <span>Enter valid email</span>}
                 </div>
                 <div className = 'col-md-6'>
                     <input type='text' name='phone' className = 'form-control' ref={register({ required: true ,maxLength :10, pattern: /^[0-9]+$/i  })}
                     value={phone} onChange={(e) => setPhone(e.target.value)} />
-                     {errors.phone && <span>This field is require numbers</span>}
+                     {errors.phone && <span>Enter valid phone</span>}
                 </div>
             </div>
 
@@ -124,12 +124,12 @@ const { register, handleSubmit, watch, errors } = useForm();
                 <div className = 'col-md-6'>
                     <input type='text' name='house' className = 'form-control' ref={register({ required: true ,maxLength :15  })}
                     value={house} onChange={(e) => setHouse(e.target.value)} />
-                     {errors.house && <span>This field is required</span>}
+                     {errors.house && <span>Enter house name or number</span>}
                 </div>
                 <div className = 'col-md-6'>
                     <input type='text' name='street' className = 'form-control' ref={register({ required: true ,maxLength :35  })}
                     value={street} onChange={(e) => setStreet(e.target.value)} />
-                    {errors.street && <span>This field is required</span>}
+                    {errors.street && <span>Enter street</span>}
                 </div>
             </div>
             <div className='row'>
@@ -140,12 +140,12 @@ const { register, handleSubmit, watch, errors } = useForm();
                 <div className = 'col-md-6'>
                     <input type='text' name='suburb' className = 'form-control' ref={register({ required: true ,maxLength :35  })}
                     value={suburb} onChange={(e) => setSuburb(e.target.value)} />
-                    {errors.suburb && <span>This field is required</span>}
+                    {errors.suburb && <span>Enter suburb</span>}
                 </div>
                 <div className = 'col-md-6'>
                     <input type='text' name='state' className = 'form-control' ref={register({ required: true ,maxLength :10  })}
                     value={state} onChange={(e) => setState(e.target.value)} />
-                    {errors.state && <span>This field is required</span>}
+                    {errors.state && <span>Enter state</span>}
                 </div>
             </div>
             <div className='row'>
@@ -156,12 +156,12 @@ const { register, handleSubmit, watch, errors } = useForm();
                 <div className = 'col-md-6'>
                     <input type='text' name='postcode' className = 'form-control' ref={register({ required: true ,minLength:4, maxLength :4 ,pattern: /^[(0-9)*]+$/gi })}
                     value={postcode} onChange={(e) => setPostcode(e.target.value)} />
-                     {errors.postcode && <span>This field is require 4 digits</span>}
+                     {errors.postcode && <span>Enter valid postcode</span>}
                 </div>
                 <div className = 'col-md-6'>
                     <input type='text' name='country' className = 'form-control' ref={register({ required: true ,maxLength :15  })}
                     value={country} onChange={(e) => setCountry(e.target.value)} />
-                     {errors.country && <span>This field is required</span>}
+                     {errors.country && <span>Enter country</span>}
                 </div>
             </div>
             <div className='row'>

@@ -26,17 +26,17 @@ const PriviewCard = ({title, email, phone, addr1, addr2, postcode, country, prof
                     </div>
                     <div className='row card-subheading'>
                         <div className="col-md-2"><label >ADDRESS </label></div>
-                        <div className="col-md-10">{addr1}</div>
+                        <div className="col-md-10 capitalize">{addr1}</div>
                     </div>
                     <div className='row card-subheading'>
                         <div className="col-md-2"><label >&nbsp;</label></div>
-                        <div className="col-md-10">{addr2}</div>
+                        <div className="col-md-10 capitalize">{addr2}</div>
                     </div>
                     <div className='row card-subheading'>
                         <div className = 'col-md-2'> <label >POSTCODE </label> </div>
                         <div className = 'col-md-3'> {postcode} </div>
                         <div className = 'col-md-2'> <label >COUNTRY </label> </div>
-                        <div className = 'col-md-3'> {country}  </div>
+                        <div className = 'col-md-3 capitalize'> {country}  </div>
                     </div>
                 </div>
             </div>
