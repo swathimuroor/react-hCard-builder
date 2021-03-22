@@ -102,12 +102,12 @@ const { register, handleSubmit, watch, errors } = useForm();
             </div>
             <div className='row'>
                 <div className = 'col-md-6'>
-                    <input type='text' name='email' className = 'form-control' ref={register({ required: true ,maxLength :35, pattern: /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g })}
+                    <input type='text' name='email' className = 'form-control' ref={register({ required: true ,maxLength :45, pattern: /^([a-zA-Z][-_.\w]*@[a-zA-Z][-\w]*(\.[a-zA-Z][-\w]*)*(,)?[ ]?)*$/ })}
                     value={email} onChange={(e) => setEmail(e.target.value)} />
                      {errors.email && <span>Enter valid email</span>}
                 </div>
                 <div className = 'col-md-6'>
-                    <input type='text' name='phone' className = 'form-control' ref={register({ required: true ,maxLength :10, pattern: /^[0-9]+$/i  })}
+                    <input type='text' name='phone' className = 'form-control' ref={register({ required: true ,maxLength :15, pattern: /^([0-9][\s]*)+$/i  })}
                     value={phone} onChange={(e) => setPhone(e.target.value)} />
                      {errors.phone && <span>Enter valid phone</span>}
                 </div>
